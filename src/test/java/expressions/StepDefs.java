@@ -21,6 +21,7 @@ public class StepDefs {
 
     // + Nice; I can replace it with a regex step and use regex combined with expressions!
     // (My question was: Can I still use regex? (and how?) Or will all my existing tests break?)
+    // Note that steps using cucumber expressions are not recognized by IntelliJ; the plugin will need to be updated.
     @Given("^I have (\\d+) cucumbers in my belly$")
     public void i_have_cucumbers_in_my_belly(int integer) {
         cucumbers = integer;
@@ -53,13 +54,15 @@ public class StepDefs {
     // Obviously it doesn't generate a step with {word} in it, because how would it know which word is my variable
     // Replacing with {word} AND adding an argument works
     // (if argument not added, throws "cucumber.runtime.CucumberException: Arity mismatch:" - as expected)
+    // - IntelliJ gives an error on {word} saying "Number expected"
     @When("I test {word}")
     public void i_test_expressions(String word) {
         // Write code here that turns the phrase above into concrete actions
         throw new PendingException();
     }
 
-    // Hmm, somehow it doesn't recognize this step? (Replaced mulitple words from generated snippet with {string}
+    // - Hmm, somehow it doesn't recognize this step? (Replaced mulitple words from generated snippet with {string}
+    // - IntelliJ gives an error on {string} saying "Number expected"
     @Then("my test should {string}")
     public void my_test_should_very_surely_pass(String multipleWords) {
         // Write code here that turns the phrase above into concrete actions
