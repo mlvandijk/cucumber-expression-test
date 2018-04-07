@@ -5,4 +5,4 @@ Feature: Check that primitives work in cucumber expressions
     And I have 42.5 cucumbers in my belly
     When I test expressions
     And I test cucumbers
-    Then my test should very surely pass
+    Then my test should "very surely pass"

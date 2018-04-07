@@ -46,9 +46,15 @@ public class StepDefs {
     // "I have 42.5 cucumbers in my belly" matches more than one step definition:
     // (Which is as expected :)
     // Using float instead of double works.
-    @Given("I have {float} cucumbers in my belly")
-    public void i_have_cucumbers_in_my_belly(float slices) {
-        floatingSlices = slices;
+//    @Given("I have {float} cucumbers in my belly")
+//    public void i_have_cucumbers_in_my_belly(float slices) {
+//        floatingSlices = slices;
+//    }
+
+    @Given("I have {double} cucumbers in my belly")
+    public void i_have_cucumbers_in_my_belly(Double double1) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
     }
 
     // Obviously it doesn't generate a step with {word} in it, because how would it know which word is my variable
