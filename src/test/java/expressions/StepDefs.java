@@ -138,7 +138,7 @@ public class StepDefs {
     }
 
     @Given("I have {byte} cucumbers in my belly/stomach")
-    public void i_have_byte_cucumbers_in_my_belly(Integer int1) {
+    public void i_have_byte_cucumbers_in_my_belly(Byte byte1) {
         // Write code here that turns the phrase above into concrete actions
         throw new PendingException();
     }
