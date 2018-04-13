@@ -5,19 +5,18 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
+
 public class StepDefs {
 
     // Question: how does it "know: to generate expressions not regex? Could I still generate regex if I prefer?
-
-    // IntelliJ plugin:
-    // - IntelliJ gives an error on {int} or {double} or other number type saying "Number expected"
-    // - IntelliJ also gives an error on {word} or {string} saying "Number expected"
-    // - Steps using cucumber expressions are not recognized by IntelliJ
 
     int cucumbers;
     long longCucumbers;
     double doubleSlices;
     float floatingSlices;
+    BigDecimal bigDecimalSlices;
 
     // 1. Using numbers that are integers:
     // Can use only one integer type, otherwise AmbiguousStepDefinitionsException is thrown (as expected)
@@ -81,8 +80,6 @@ public class StepDefs {
 //        floatingSlices = slices;
 //    }
 
-
-
 //    @Given("I have {float} cucumbers in my belly")
 //    public void i_have_cucumbers_in_my_belly(float float1) {
 //        floatingSlices = float1;
@@ -98,11 +95,52 @@ public class StepDefs {
         throw new PendingException();
     }
 
-    // - Hmm, somehow it doesn't recognize this step? (Replaced mulitple words from generated snippet with {string}
+
     // - IntelliJ gives an error on {string} saying "Number expected"
     @Then("my test should {string}")
     public void my_test_should_very_surely_pass(String multipleWords) {
         // Write code here that turns the phrase above into concrete actions
         throw new PendingException();
     }
+
+    // By default generates step with {int}
+    // throws java.lang.NumberFormatException: For input string: "99999999999999999999"
+//    @Given("I have a really large number of {int} pickles")
+//    public void i_have_a_really_large_number_of_pickles(Integer int1) {
+//        // Write code here that turns the phrase above into concrete actions
+//        throw new PendingException();
+//    }
+
+    @Given("I have a really large number of {bigint} pickles")
+    public void i_have_a_really_large_number_of_pickles(BigInteger int1) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    // By default generates step with {double}
+    // This does not throw any error though
+    @Given("I have a really large number of {double} pickle slices")
+    public void i_have_a_really_large_number_of_pickle_slices(Double double1) {
+        doubleSlices = double1;
+    }
+
+    // Replacing {double} with {bigdec} throws an exception:
+    // io.cucumber.cucumberexpressions.UndefinedParameterTypeException: Undefined parameter type {bigdec}
+    @Given("I have a really large number of {bigdecimal} pickle slices")
+    public void i_have_a_really_large_number_of_pickle_slices(BigDecimal bigDecimal) {
+        bigDecimalSlices = bigDecimal;
+    }
+
+    @Then("I can use bigint and bigdec")
+    public void i_can_use_bigint_and_bigdec() {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @Given("I have {byte} cucumbers in my belly/stomach")
+    public void i_have_byte_cucumbers_in_my_belly(Integer int1) {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
 }
